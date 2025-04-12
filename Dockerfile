@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 
 # SSH 서버 설정
 RUN mkdir /var/run/sshd
-RUN echo 'root:0314' | chpasswd  
+RUN echo 'root:Ryuhansol12!@' | chpasswd  
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # 작업 디렉토리 생성
