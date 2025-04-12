@@ -1,0 +1,14 @@
+services:
+  jekyll:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"  # Jekyll 서버 포트
+      - "2223:22"    # SSH 포트 포워딩 (2223 -> 22)
+    volumes:
+      - ./blog:/root/workspace  # 로컬 blog 폴더를 컨테이너의 /root/workspace로 마운트
+    environment:
+      - JEKYLL_ENV=development
+    restart: unless-stopped
+    command: /bin/bash -c "service ssh start && tail -f /dev/null"
